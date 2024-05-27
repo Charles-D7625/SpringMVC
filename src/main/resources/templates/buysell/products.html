@@ -8,6 +8,11 @@
 <body>
     <h1>ТОВАРЫ</h1>
 
+    <form th:action="@{/products}" method="get">
+        Поиск по названию объявления: <input type="text" name="title"><br>
+        <input type="submit" value="Поиск">
+    </form>
+
     <div>
         <ul th:each="product:${products}">
             <p>

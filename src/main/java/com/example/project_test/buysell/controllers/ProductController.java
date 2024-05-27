@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.project_test.buysell.models.Product;
 import com.example.project_test.buysell.services.ProductService;
@@ -20,9 +21,9 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("")
-    public String products(Model model){
+    public String products(@RequestParam(name = "title", required = false) String title, Model model){
 
-        model.addAttribute("products", productService.listProducts());
+        model.addAttribute("products", productService.listProducts(title));
         return "buysell/products";
     }
 
